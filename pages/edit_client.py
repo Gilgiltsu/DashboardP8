@@ -11,11 +11,8 @@ model_path = "./Model_NoAPI/model_20250214_173950.pkl"
 model = joblib.load(model_path)
 API_PREDICT = "https://customer-risk-profile-1586eef30b15.herokuapp.com/predict"
 
-# Liste des noms de fichiers
-filenames = [f"df_cleaned_part{i+1}.csv" for i in range(6)]
+data = pd.read_csv('./echantillon_data.csv')
 
-# Lire et concaténer tous les fichiers
-data = pd.concat([pd.read_csv(file) for file in filenames], ignore_index=True)
 # Vérification du client
 def get_client_infos(client_id, data):
     client_data = data[data['sk_id_curr'] == client_id]
