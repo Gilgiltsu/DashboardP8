@@ -13,21 +13,11 @@ shap.initjs()
 
 API_PREDICT = "https://customer-risk-profile-1586eef30b15.herokuapp.com/predict"
 
-# Charger les données
-def load_csv_from_dropbox(shared_link):
-    """Charge un fichier CSV directement depuis un lien partagé Dropbox."""
-    # Convertir le lien partagé en lien direct
-    direct_link = shared_link.replace("dl=0", "dl=1")
+# Liste des noms de fichiers
+filenames = [f"df_cleaned_part{i+1}.csv" for i in range(6)]
 
-    # Charger le fichier CSV dans un DataFrame pandas
-    df = pd.read_csv(direct_link)
-    return df
-
-shared_link = "https://www.dropbox.com/scl/fi/ywb34b2q9dafx9ifkt10q/df_cleaned.csv?rlkey=s3f29j4267ef0h2qv77knula1&st=bfeef662&dl=0"
-
-data = load_csv_from_dropbox(shared_link)
-
-#data = pd.read_csv('./df_cleaned.csv')
+# Lire et concaténer tous les fichiers
+data = pd.concat([pd.read_csv(file) for file in filenames], ignore_index=True)
 
 # Configuration de la page
 st.set_page_config(page_title="Analyse Client", layout="wide", initial_sidebar_state="collapsed")
