@@ -13,14 +13,7 @@ shap.initjs()
 
 API_PREDICT = "https://customer-risk-profile-1586eef30b15.herokuapp.com/predict"
 
-# Liste des noms de fichiers
-filenames = [f"df_cleaned_part{i+1}.csv" for i in range(6)]
-
-# Lire et concaténer tous les fichiers
-data = pd.concat([pd.read_csv(file) for file in filenames], ignore_index=True)
-
-# Configuration de la page
-st.set_page_config(page_title="Analyse Client", layout="wide", initial_sidebar_state="collapsed")
+data = pd.read_csv('./echantillon_data.csv')
 
 # Titre principal centré
 st.markdown(
