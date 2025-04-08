@@ -1,0 +1,10 @@
+streamlit
+shap
+joblib
+requests
+matplotlib
+numpy
+seaborn
+pandas
+ipython
+lightgbm
