@@ -156,7 +156,7 @@ if "response_test_message" in st.session_state:
             client_data = client_data.fillna(0).drop(columns='target')
             data = data[data['target'] == 0]
             data = data.groupby('target', as_index=False).apply(lambda s: s.sample(
-                    10000, random_state=0)).fillna(0).drop(columns='target')
+                    1000, random_state=0)).fillna(0).drop(columns='target')
 
             # Calcul des valeurs SHAP
             explainer = shap.Explainer(model)
